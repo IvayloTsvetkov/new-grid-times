@@ -1,18 +1,25 @@
-import React from 'react';
-import styled from 'styled-components/macro';
+import React from "react";
+import styled from "styled-components/macro";
+import { QUERIES } from "../../constants";
 
 const MiniStory = ({ id, image, title }) => {
   return (
-    <a href={`/story/${id}`}>
-      <Wrapper>
+    <Wrapper href={`/story/${id}`}>
+      <InnerWrapper>
         <Image alt={image.alt} src={image.src} />
         <Title>{title}</Title>
-      </Wrapper>
-    </a>
+      </InnerWrapper>
+    </Wrapper>
   );
 };
 
-const Wrapper = styled.article`
+const Wrapper = styled.a`
+  @media ${QUERIES.tabletAndUp} {
+    min-width: 220px;
+  }
+`;
+
+const InnerWrapper = styled.article`
   display: flex;
   flex-direction: column;
   gap: 8px;
